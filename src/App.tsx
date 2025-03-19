@@ -3,6 +3,9 @@ import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 import { FileUploader } from '@aws-amplify/ui-react-storage';
 import '@aws-amplify/ui-react/styles.css';
+import { Authenticator } from '@aws-amplify/ui-react';
+
+
 
 const client = generateClient<Schema>();
 
@@ -21,6 +24,16 @@ function App() {
 
   return (
     <main>
+       <Authenticator>
+        {({ signOut, user }) => (
+          <main>
+            <h1>Hello {user?.username}</h1>
+            <button onClick={signOut}>Sign out</button>
+            <Component {...pageProps} />
+          </main>
+        )}
+      </Authenticator>
+      
       <h1>My todos</h1>
       <button onClick={createTodo}>+ new</button>
       <ul>
@@ -41,6 +54,7 @@ function App() {
             path="profile-pictures/"
             maxFileCount={120}
             isResumable
+            bucket="amplifyTeamDriveNormanTest"
           />
       </div>
     </main>
