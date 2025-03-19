@@ -4,12 +4,13 @@ import { generateClient } from "aws-amplify/data";
 import { FileUploader } from '@aws-amplify/ui-react-storage';
 import '@aws-amplify/ui-react/styles.css';
 import { Authenticator } from '@aws-amplify/ui-react';
+import type { AppProps } from 'next/app';
 
 
 
 const client = generateClient<Schema>();
 
-function App() {
+function App({ Component, pageProps }: AppProps) {
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
 
   useEffect(() => {
