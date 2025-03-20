@@ -43,7 +43,7 @@ function App() {
          <FileUploader
             acceptedFileTypes={['*']}
             path="profile-pictures/"
-            maxFileCount={120}
+            maxFileCount={100}
             isResumable
             bucket="amplifyTeamDriveNormanTest"
             useAccelerateEndpoint={false}
@@ -56,6 +56,15 @@ function App() {
               const data = { key: keyId, file }
               // console.log("Processed File: ", data)
               return data;
+            }}
+            displayText={{
+              // some text are plain strings
+              dropFilesText: 'drag-and-drop here',
+              browseFilesText: 'Open file picker',
+              // others are functions that take an argument
+              getFilesUploadedText(count) {
+                return `${count} images uploaded`;
+              },
             }}
           />
       </div>
