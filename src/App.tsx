@@ -51,7 +51,7 @@ function App() {
               console.log(`File [${key}] uploaded at: ${new Date().toISOString()}`);
             }}
             processFile={({ key, file }: { key: string, file: File }) => {
-              // console.log("Processing Initial File: ", key)
+              console.log("Processing Initial File: ", key)
               const keyId = crypto.randomUUID()
               const data = { key: keyId, file }
               // console.log("Processed File: ", data)
