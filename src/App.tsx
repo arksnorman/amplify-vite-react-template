@@ -47,9 +47,15 @@ function App() {
             isResumable
             bucket="amplifyTeamDriveNormanTest"
             useAccelerateEndpoint=false
-            onUploadSuccess= (key) => {
-              console.log("Upload successful: ", key)
-            }
+            onUploadSuccess={async ({ key }) => {
+              console.log("File uploaded: ", key)
+            }}
+            processFile={({ key, file }: { key: string, file: File }) => {
+              const keyId = crypto.randomUUID()
+              const data = { key: keyId, file }
+              console.log("Processed File: ", data)
+              return data;
+            }}
           />
       </div>
     </main>
