@@ -46,14 +46,15 @@ function App() {
             maxFileCount={120}
             isResumable
             bucket="amplifyTeamDriveNormanTest"
-            useAccelerateEndpoint=false
+            useAccelerateEndpoint={false}
             onUploadSuccess={async ({ key }) => {
-              console.log("File uploaded: ", key)
+              console.log(`File [${key}] uploaded at: ${new Date().toISOString()}`);
             }}
             processFile={({ key, file }: { key: string, file: File }) => {
+              // console.log("Processing Initial File: ", key)
               const keyId = crypto.randomUUID()
               const data = { key: keyId, file }
-              console.log("Processed File: ", data)
+              // console.log("Processed File: ", data)
               return data;
             }}
           />
