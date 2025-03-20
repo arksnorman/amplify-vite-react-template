@@ -46,6 +46,10 @@ function App() {
             maxFileCount={120}
             isResumable
             bucket="amplifyTeamDriveNormanTest"
+            useAccelerateEndpoint=false
+            onUploadSuccess= (key) => {
+              console.log("Upload successful: ", key)
+            }
           />
       </div>
     </main>
